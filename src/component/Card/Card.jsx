@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import Button from '../Button/Button';
 import SingleData from '../SingleData/SingleData';
 
 const Card = () => {
 const [data, setData] = useState([])
+const [showAll, setShowAll] = useState(false)
+
+// const handleShowAll =() =>{ /* for nubs */
+//     setShowAll(true)
+// } 
 
 useEffect(()=>{
     const loadData= async() =>{
@@ -14,14 +20,22 @@ useEffect(()=>{
     loadData(); /* call to fetch */
 },[])
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:px-12'>
+        <>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:px-12 w-11/12 mx-auto'>
             {
-                data.map((singleData) => {
-                    // console.log(singleData)
-                    return <SingleData singleData={singleData}></SingleData>
-                })
-            }
+                data.slice(0, showAll ? 12 : 6).map((singleData) =>(
+             <SingleData singleData={singleData} key={singleData.id}></SingleData>
+
+            ))}
         </div>
+    {   
+    !showAll&& <span
+    onClick={()=>setShowAll(true)}>
+    <Button>Show More</Button>
+    </span>
+    }       
+        </>
+
     );
 };
 
