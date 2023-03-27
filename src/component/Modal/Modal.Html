@@ -1,0 +1,48 @@
+<div className="modal-box w-11/12 max-w-5xl lg:overflow-hidden">
+    <div className="modal-action">
+      <label for="my-modal-5" className="text-white bg-red-400 hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center top-0 right-0 absolute"><svg aria-hidden="true" className=" w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></label>
+    </div>
+
+      <div className="flex flex-col-reverse lg:flex-row justify-center items-center lg:p-5 gap-6">
+        <div className="border-red-400 bg-red-50 border-2 rounded-lg p-5 lg:w-1/2 ">
+          <div>
+            <h2 className="text-black text-lg font-semibold  lg:mt-8">${detail.data?.description ? detail.data?.description : ""}</h2>
+            <div className="lg:flex justify-around items-center gap-5 lg:gap-10 text-center my-2 lg:my-5">
+
+
+              <h3 className="font-bold text-sm text-green-600 rounded-md px-1 lg:px-5 py-5 my-2 bg-white">${detail.data.pricing !==null ? detail.data.pricing[0].price : 'Free Of Cost'} <br>  ${detail.data.pricing !==null?detail.data.pricing[0].plan:'Basic'}</h3>
+              <h3 className="font-bold text-sm text-yellow-600 rounded-md px-0 lg:px-5 py-5 my-2 bg-white">${detail.data.pricing !==null ? detail.data.pricing[1].price : 'Free Of Cost'} <br>  ${detail.data.pricing !==null?detail.data.pricing[1].plan:'Pro'}</h3>
+              <h3 className="font-bold text-sm text-red-500 rounded-md px-0 lg:px-5 py-5 my-2 bg-white">${detail.data.pricing !==null ? detail.data.pricing[2].price : 'Free Of Cost'} <br>  ${detail.data.pricing !==null?detail.data.pricing[2].plan:'Enterprise'}</h3>
+            </div>
+            <div className="flex justify-around gap-4 lg:mb-8">
+              <div>
+                <h2 className="text-black text-lg font-semibold mb-4">Features</h2>
+                <h3 className="mb-1 font-normal text-sm text-gray-700">${detail.data?.features[1].feature_name ? '&#9679 ' +detail.data.features[1].feature_name : ""}</h3>
+                <h3 className="mb-1 font-normal text-sm text-gray-700">${detail.data?.features[2].feature_name ? '&#9679 ' +detail.data.features[2].feature_name : ""}</h3>
+                <h3 className="mb-1 font-normal text-sm text-gray-700">${detail.data?.features[3].feature_name ? '&#9679 ' + detail.data.features[3].feature_name : ""}</h3>
+              </div>
+              <div>
+                <h2 className="text-black text-lg font-semibold mb-4">Integrations</h2>
+                <h3 className="mb-1 font-normal text-sm text-gray-700"> ${detail.data.integrations === null||detail.data.integrations[0] === undefined ?""  : '&#9679 ' + detail.data.integrations[0]}</h3>
+                <h3 className="mb-1 font-normal text-sm text-gray-700"> ${detail.data.integrations === null||detail.data.integrations[1] === undefined ?""  :'&#9679 ' + detail.data.integrations[1]}</h3>
+                <h3 className="mb-1 font-normal text-sm text-gray-700"> ${detail.data.integrations === null||detail.data.integrations[2] === undefined ?""  :'&#9679 ' + detail.data.integrations[2]}</h3>
+                <h3 className="mb-1 font-normal text-sm text-gray-700">&#9679 ${detail.data.integrations === null||detail.data.integrations[3] === undefined ?"No Data found"  :detail.data.integrations[3]}</h3>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full lg:w-1/2 text-center">
+          <div className="relative">
+            <img className="p-3 lg:p-8 rounded-lg" src={image_link && image_link[0]} alt="" />
+            <h2 className="text-black text-lg font-semibold">${detail.data.input_output_examples !== null ? detail.data.input_output_examples[0].input : 'Can you give any example?'}</h2>
+            <p className="mb-1 font-normal text-gray-700">${detail.data.input_output_examples !== null ? detail.data.input_output_examples[1].output : 'No! Not Yet! Take a break!!!'}</p>
+            <div id="accuracy-div"
+    className="text-white bg-red-500 font-medium rounded-lg text-xs px-5 py-1.5 top-12 right-12 absolute"
+    style="${detail.data.accuracy.score !== null ? '' : 'display: none;'}">
+    ${detail.data.accuracy.score !== null ? detail.data.accuracy.score * 100 + '% accuracy' : ''}
+</div>
+          </div>
+        </div>
+      </div>
+</div>

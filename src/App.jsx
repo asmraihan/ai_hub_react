@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Header/>
-      <Button>Sort By Date</Button>
+      {/* <Button>Sort By Date</Button> */}
       <Card></Card>
       {/* <Button>Show More</Button> */}
     </>

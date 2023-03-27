@@ -13,6 +13,14 @@ const [uniqueId, setUniqueId] = useState(null)
 // const handleShowAll =() =>{ /* for nubs */
 //     setShowAll(true)
 // } 
+const handelSort =() =>{
+    const sortedData = data.sort((a,b)=>{
+        return new Date(a.published_in) - new Date(b.published_in)
+    })
+    setData([...data, sortedData])
+}
+
+
 useEffect(()=>{
     // console.log('hlw frm useEfct')
     fetch(`https://openapi.programming-hero.com/api/ai/tool/${uniqueId}`)
@@ -31,6 +39,9 @@ useEffect(()=>{
 },[])
     return (
         <>
+    <span onClick={handelSort}>
+      <Button >Sort By Date</Button>
+    </span>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:px-12 w-11/12 mx-auto'>
             {
                 data.slice(0, showAll ? 12 : 6).map((singleData) =>(
